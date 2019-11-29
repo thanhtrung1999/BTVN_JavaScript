@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JavaS_Day7 - Bai3</title>
+	<link rel="stylesheet" type="text/css" href=".\css\bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			background-color: black;
+			color: white;
+		}
+		input.form-control{
+			color: white;
+			background-color: black;
+			border: 1px solid gray;
+		}
+		.btn-warning{
+			background-color: darkorange;
+			color: white;
+			border: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h3 class="text-center">Giải phương trình bậc hai một ẩn ax<sup>2</sup> + b = 0</h3>
+		<hr class="bg-dark">
+		<form action="#" method="post">
+			<div class="form-group">
+				<label>Nhập vào hệ số a:</label>
+				<input type="text" class="form-control" id="number1">
+			</div>
+			<div class="form-group">
+				<label>Nhập vào hệ số b:</label>
+				<input type="text" class="form-control" id="number2">
+			</div>
+			<div class="form-group">
+				<label>Nhập vào hệ số c:</label>
+				<input type="text" class="form-control" id="number3">
+			</div>
+			<p>Phương trình bậc hai một ẩn của bạn có dạng</p>
+			<div id="display" class="mb-4" style="color: yellow;"></div>
+			<button type="button" class="btn btn-warning mb-4" onclick="return solveEquation()">Tìm x</button>
+			<button type="reset" class="btn btn-outline-danger mb-4">Reset</button>
+			<div id="result" style="color: pink;"></div>
+			<div id="error" style="color: red;"></div>
+		</form>
+		<script type="text/javascript">
+			function solveEquation () {
+				var obj_number1 = document.getElementById('number1');
+				var a = obj_number1.value;
+				var obj_number2 = document.getElementById('number2');
+				var b = obj_number2.value;
+				var obj_number3 = document.getElementById('number3');
+				var c = obj_number3.value;
+				var display = "";
+				var result = "";
+				var error = "";
+				var x = "";
+				var delta = "";
+
+				if(a == '' || b == '' || c == '')
+					error = "Không được để trống";
+				else if(isNaN(a) == true || isNaN(b) == true || isNaN(c) == true)
+					error = "Yêu cầu nhập số";
+				else{
+					a = parseInt(a);
+					b = parseInt(b);
+					c = parseInt(c);
+					x = parseFloat(x);
+					delta = parseInt(delta);
+
+					if(a == 0){
+						if(b == 0){
+							result = "Phương trình vô nghiệm";
+						}
+						else{
+							display = b+"x + "+c+" = 0";
+							x = parseFloat(-c/b);
+							result = "Phương trình có 1 nghiệm duy nhất: x = " +x;
+						}
+					}
+					else{
+						delta = Math.pow(b, 2) - 4*a*c;
+
+						if(delta > 0){
+							var x1 = "";
+							var x2 = "";
+							display = a + "x<sup>2</sup> + " + b + "x + " + c + " = 0";
+							x1 = (-b + Math.sqrt(delta)) / (2*a);
+					        x2 = (-b - Math.sqrt(delta)) / (2*a);
+					        result = "Phương trình có 2 nghiệm là: x<sub>1</sub> = " +x1 + " và x<sub>2</sub> = " +x2;
+						}else if(delta == 0){
+							display = a + "x<sup>2</sup> + " + b + "x + " + c + " = 0";
+							x = -b / (2*a);
+							result = "Phương trình có nghiệm kép: x = " +x;
+						}else{
+							display = a + "x<sup>2</sup> + " + b + "x + " + c + " = 0";
+							result = "Phương trình vô nghiệm";
+						}
+					}
+				}
+
+				document.getElementById('display').innerHTML = display;
+				document.getElementById('error').innerHTML = error;
+				document.getElementById('result').innerHTML = result;
+
+				return false;
+			}
+		</script>
+	</div>
+</body>
+</html>

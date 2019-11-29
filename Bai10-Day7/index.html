@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bai10-Day7</title>
+	<link rel="stylesheet" type="text/css" href=".\css\bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<div>Tôi học JavaScript</div>
+		<button type="button" class="btn btn-danger" onclick="display()">Ấn để hiện thị 500 dòng như trên</button>
+		<div id="text"></div>
+
+		<script type="text/javascript">
+			function display () {
+				var text = "";
+				var count = 0;
+
+				while (count < 500) {
+					text += "Tôi học JavaScript<br>";
+					count++;
+				}
+				document.getElementById('text').innerHTML = text;
+			}
+		</script>
+	</div>
+</body>
+</html>

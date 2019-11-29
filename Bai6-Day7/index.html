@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bai6-Day7</title>
+	<link rel="stylesheet" type="text/css" href=".\css\bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h3>Kiểm tra sự tồn tại của chuỗi</h3>
+		<hr>
+		<form action="#" method="post" onsubmit="return check_exist()">
+			<div class="form-group">
+				<label>Nhập vào chuỗi ban đầu:</label>
+				<input type="text" id="first_string" class="form-control">	
+			</div>		
+			<div class="form-group">
+				<label>Nhập vào chuỗi cần kiểm tra:</label>
+				<input type="text" id="check_string" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-primary">Kiểm tra</button>
+			<div id="error" style="color: red"></div>
+			<div id="result" style="color: green"></div>
+		</form>
+		<script type="text/javascript">
+			function check_exist () {
+				var obj_str = document.getElementById('first_string');
+				var str = obj_str.value;
+				var obj_subStr = document.getElementById('check_string');
+				var sub_str = obj_subStr.value;
+				var error = "";
+				var result = "";
+
+				if(str == '' || sub_str == ''){
+					error = "Không được để trống";
+				}else{
+					if(str.includes(sub_str)){ // hoặc dùng hàm indexOf - if(str.indexOf(sub_str) != -1)
+						result = "Chuỗi <b>" +sub_str+ "</b> tồn tại trong chuỗi ban đầu <b>" +str+ "</b>";
+					}else{
+						result = "Chuỗi <b>" +sub_str+ "</b> KHÔNG tồn tại trong chuỗi ban đầu <b>" +str+ "</b>";
+					}
+				}
+
+				document.getElementById('error').innerHTML = error;
+				document.getElementById('result').innerHTML = result;
+
+				return false; 
+			}
+		</script>
+	</div>
+</body>
+</html>

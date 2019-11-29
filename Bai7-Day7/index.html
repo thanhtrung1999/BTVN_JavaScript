@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bai7-Day7</title>
+	<link rel="stylesheet" type="text/css" href=".\css\bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<h3>Tìm max - min</h3>
+		<hr>
+		<form action="#" onsubmit="return max_min()">
+			<div class="form-group">
+				<label>Nhập vào số thứ nhất:</label>
+				<input type="text" id="number1" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Nhập vào số thứ hai:</label>
+				<input type="text" id="number2" class="form-control">
+			</div>
+			<div class="form-group">
+				<label>Nhập vào số thứ ba:</label>
+				<input type="text" id="number3" class="form-control">
+			</div>
+			<button type="submit" class="btn btn-primary">Hiển thị max - min</button>
+			<div id="error" style="color: red"></div>
+			<div id="result" style="color: green"></div>
+		</form>
+		<script type="text/javascript">
+			function max_min () {
+				var obj_1 = document.getElementById('number1');
+				var n1 = obj_1.value;
+				var obj_2 = document.getElementById('number2');
+				var n2 = obj_2.value;
+				var obj_3 = document.getElementById('number3');
+				var n3 = obj_3.value;
+				var error = "";
+				var result = "";
+
+				if(n1 == '' || n2 == '' || n3 == '')
+					error = "Không được để trống";
+				else if(isNaN(n1) == true || isNaN(n2) == true || isNaN(n3) == true)
+					error = "Yêu cầu nhập số";
+				else{
+					n1 = parseInt(n1);
+					n2 = parseInt(n2);
+					n3 = parseInt(n3);
+
+					var number = new Array();
+					number[0] = n1;
+					number[1] = n2;
+					number[2] = n3;
+
+					var max_min = {
+						max: function(array){
+							var max = array[0];
+							for(var i=0; i<array.length; i++){
+								if(array[i]>max)
+									array[i] = max;
+							}
+							return max;
+						},
+						min: function(array){
+							var min = array[0];
+							for(var i=0; i<array.length; i++){
+								if(array[i]<min)
+									array[i] = min;
+							}
+							return min;
+						}
+					};
+					console.log(max_min.max(number));
+					console.log(max_min.min(number));
+
+					//document.getElementById('result').innerHTML = result;
+				}
+
+				document.getElementById('error').innerHTML = error;
+
+				return false;
+			}
+		</script>
+	</div>
+</body>
+</html>

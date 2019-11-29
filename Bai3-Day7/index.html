@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>JavaS_Day7 - Bai3</title>
+	<link rel="stylesheet" type="text/css" href=".\css\bootstrap.min.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<h3 class="text-center">Giải phương trình bậc nhất ax + b = 0</h3>
+		<hr>
+		<form action="#" method="post">
+			<div class="form-group">
+				<label>Nhập vào hệ số a:</label>
+				<input type="text" class="form-control" id="number1">
+			</div>
+			<div class="form-group">
+				<label>Nhập vào hệ số b:</label>
+				<input type="text" class="form-control" id="number2">
+			</div>
+			<p>Phương trình bậc nhất của bạn có dạng</p>
+			<div id="display" class="mb-4" style="color: blue;"></div>
+			<button type="button" class="btn btn-primary mb-4" onclick="return solveEquation()">Tìm x</button>
+			<button type="reset" class="btn btn-outline-warning mb-4">Reset</button>
+			<div id="result" style="color: green;"></div>
+			<div id="error" style="color: red;"></div>
+		</form>
+		<script type="text/javascript">
+			function solveEquation () {
+				var obj_number1 = document.getElementById('number1');
+				var a = obj_number1.value;
+				var obj_number2 = document.getElementById('number2');
+				var b = obj_number2.value;
+				var display = "";
+				var result = "";
+				var error = "";
+				var x = "";
+
+				if(a == '' || b == '')
+					error = "Không được để trống";
+				else if(isNaN(a) == true || isNaN(b) == true)
+					error = "Yêu cầu nhập số";
+				else{
+					a = parseInt(a);
+					b = parseInt(b);
+					x = parseFloat(x);
+					if(a == 0)
+						result = "Phương trình vô nghiệm";
+					else if(a != 0){
+						if(b == 0){
+							display = a + "x = 0";
+							result = "x = 0";
+						}
+						else{
+							display = a + "x + " + b + " = 0";
+							x = parseFloat(-b/a);
+							result = "x = " +x;
+						}
+					}
+				}
+
+				document.getElementById('display').innerHTML = display;
+				document.getElementById('error').innerHTML = error;
+				document.getElementById('result').innerHTML = result;
+
+				return false;
+			}
+		</script>
+	</div>
+</body>
+</html>
